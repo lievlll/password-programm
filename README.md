@@ -7,13 +7,13 @@ Anfalova Yana
 Simple console application for storing and generating passwords.
 
 ## Features
--Add passwords
--Generate passwords
--Delete passwords
--Save/load JSON
+1)Add passwords
+2)Generate passwords
+3)Delete passwords
+4)Save/load JSON
 
 ## Architecture
---MVC (Model, Controller, Services)
+-MVC (Model, Controller, Services)
 
 ## How to run
 python main.py
