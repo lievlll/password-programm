@@ -13,10 +13,30 @@ Simple console application for storing and generating passwords.
 4)Save/load JSON
 
 ## Architecture
--MVC (Model, Controller, Services)
+The project follows MVC pattern:
+
+- Model: PasswordRecord
+- Controller: PasswordController
+- Services:
+  - StorageService (JSON storage)
+  - PasswordService (password generation)
+  - ValidationService (input validation)
+
+
+## Example
+1. Add password:
+Service: Gmail
+Username: user123
+Password: qwerty
+
+2. Generate password:
+Length: 8
+
+Output:
+Password: A8fK2LmP
 
 ## How to run
 python main.py
 
-## Tests
+## How to run tests
 python -m unittest tests/test_passwords.py
