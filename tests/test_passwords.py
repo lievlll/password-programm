@@ -12,6 +12,11 @@ class TestPassword(unittest.TestCase):
         service = PasswordService()
         pwd = service.generate(5)
         self.assertTrue(pwd != "")
+        
+    def test_zero_length(self):
+        service = PasswordService()
+        pwd = service.generate(0)
+        self.assertEqual(pwd, "")
 
 if __name__ == "__main__":
     unittest.main()
