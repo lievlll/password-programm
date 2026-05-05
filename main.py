@@ -1,10 +1,13 @@
 from services.storage_service import StorageService
 from services.password_service import PasswordService
 from controllers.password_controller import PasswordController
+from services.validation_service import ValidationService
+
 
 storage = StorageService()
 password_service = PasswordService()
 controller = PasswordController(storage)
+validator = ValidationService()
 
 while True:
     print("\n=== Password Manager ===")
@@ -20,7 +23,10 @@ while True:
         service = input("Service: ")
         username = input("Username: ")
         password = input("Password: ")
-        controller.add(service, username, password)
+        if not validator.not_empty(service) or not validator.not_empty(username) or not validator.not_empty(password):
+            print("Error: fields cannot be empty")
+        else:
+            controller.add(service, username, password)
 
     elif choice == "2":
         try:
@@ -28,7 +34,7 @@ while True:
             pwd = password_service.generate(length)
             print("Password:", pwd)
         except:
-            print("Error!")
+            print("Invalid input")
 
     elif choice == "3":
         records = controller.show_all()
@@ -41,7 +47,7 @@ while True:
             index = int(input("Index: "))
             controller.delete(index)
         except:
-            print("Error!")
+            print("Invalid input")
 
     elif choice == "5":
         controller.save()
